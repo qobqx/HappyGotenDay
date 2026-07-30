@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>吾槙 Birthday Project</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(#040814,#09152f,#120c2f);
+font-family:sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{
+opacity:.2;
+transform:scale(1);
+}
+to{
+opacity:1;
+transform:scale(2);
+}
+}
+
+.center{
+text-align:center;
+z-index:10;
+}
+
+h1{
+font-size:52px;
+letter-spacing:4px;
+margin-bottom:15px;
+}
+
+p{
+font-size:18px;
+opacity:.8;
+margin-bottom:35px;
+}
+
+button{
+padding:15px 45px;
+font-size:20px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+background:white;
+color:#222;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.count{
+margin-top:30px;
+font-size:22px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="center">
+<h1>PROJECT STAR</h1>
+<p>吾槙 Birthday Project</p>
+
+<button>ENTER</button>
+
+<div class="count" id="count"></div>
+</div>
+
+<script>
+
+for(let i=0;i<250;i++){
+
+let star=document.createElement("div");
+
+star.className="star";
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+
+star.style.animationDuration=(Math.random()*3+1)+"s";
+
+document.body.appendChild(star);
+
+}
+
+const birthday=new Date("2026-11-05");
+
+function update(){
+
+const now=new Date();
+
+const diff=birthday-now;
+
+const day=Math.ceil(diff/(1000*60*60*24));
+
+document.getElementById("count").innerHTML=
+"誕生日まで あと "+day+"日";
+
+}
+
+update();
+
+</script>
+</html>
+</body>
